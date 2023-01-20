@@ -11,8 +11,11 @@ import AddIcon from '@mui/icons-material/Add'
 import ForumIcon from '@mui/icons-material/Flag'
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { useStateValue } from '../StateProvider'
 
 const Header = () => {
+    const [{ user }, dispatch] = useStateValue()
+
     return (
         <HeaderWrapper>
             <HeaderLeft>
@@ -41,8 +44,8 @@ const Header = () => {
             </HeaderCenter>
             <HeaderRight>
                 <div className="header__info">
-                    <Avatar src="https://pbs.twimg.com/profile_images/1020939891457241088/fcbu814K_400x400.jpg " />
-                    <h4>Nabendu</h4>
+                    <Avatar src={user.photoURL} />
+                    <h4>{user.displayName}</h4>
                 </div>
                 <IconButton><AddIcon /></IconButton>
                 <IconButton><ForumIcon /></IconButton>

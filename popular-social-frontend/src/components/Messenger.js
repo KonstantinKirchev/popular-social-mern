@@ -4,6 +4,7 @@ import VideocamIcon from '@mui/icons-material/Videocam'
 import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary'
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
 import styled from 'styled-components'
+import { useStateValue } from '../StateProvider'
 
 const Messenger = () => {
     const [input, setInput] = useState('')
@@ -15,11 +16,12 @@ const Messenger = () => {
     const handleSubmit = e => {
         e.preventDefault()
     }
+    const [{ user }, dispatch] = useStateValue()
     
     return (
         <MessengerWrapper>
             <MessengerTop>
-                <Avatar src=" https://pbs.twimg.com/profile_images/1020939891457241088/fcbu814K_400x400.jpg " />
+                <Avatar src={user.photoURL} />
                 <form>
                     <input
                         type="text"

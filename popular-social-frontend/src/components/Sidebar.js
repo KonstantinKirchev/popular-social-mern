@@ -8,11 +8,14 @@ import StorefrontIcon from '@mui/icons-material/Storefront'
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary'
 import ExpandMoreOutlined from '@mui/icons-material/ExpandMoreOutlined'
 import styled from 'styled-components'
+import { useStateValue } from '../StateProvider'
 
 const Sidebar = () => {
+    const [{ user }, dispatch] = useStateValue()
+
     return (
         <SidebarWrapper>
-            <SidebarRow src="https://pbs.twimg.com/profile_images/1020939891457241088/fcbu814K_400x400.jpg" title="Nabendu" />
+            <SidebarRow src={user.photoURL} title={user.displayName} />
             <SidebarRow Icon={LocalHospitalIcon} title="COVID-19 Information Center" />
             <SidebarRow Icon={EmojiFlagsIcon} title="Pages" />
             <SidebarRow Icon={PeopleIcon} title="Friends" />
